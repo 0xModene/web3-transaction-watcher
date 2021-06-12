@@ -1,7 +1,7 @@
 {
   "name": "web3-transaction-watcher",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/user-event": "^13.1.9",
     "@types/canvas-confetti": "^1.4.0",

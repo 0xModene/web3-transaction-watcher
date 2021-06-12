@@ -1,9 +1,17 @@
-import { useContext } from "react";
-
-import { TransactionWatcherContext } from "contexts/TransactionWatcher";
+import { TransactionStatusType } from "lib/components/TransactionWatcher";
+import { useState } from "react";
 
 const useTransactionWatcher = () => {
-  return { ...useContext(TransactionWatcherContext) };
+  const [transactionId, setTransactionId] = useState<string>();
+  const [transactionStatus, setTransactionStatus] =
+    useState<TransactionStatusType>(TransactionStatusType.IS_UNSTARTED);
+
+  return {
+    transactionId,
+    setTransactionId,
+    transactionStatus,
+    setTransactionStatus,
+  };
 };
 
 export default useTransactionWatcher;

@@ -1,10 +1,10 @@
-import BigNumber from "utils/bignumber";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import { provider, TransactionReceipt } from "web3-core";
 import { AbiItem } from "web3-utils";
 
-import ERC20ABI from "index-sdk/abi/ERC20.json";
+import ERC20ABI from "lib/index-sdk/abi/ERC20.json";
+import BigNumber from "./bignumber";
 
 const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));

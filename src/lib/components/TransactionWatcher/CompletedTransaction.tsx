@@ -9,14 +9,14 @@ import { makeEtherscanLink } from "lib/utils/index";
 import { TransactionStatusType } from "./TransactionWatcher";
 
 const CompletedTransaction: React.FC = () => {
-  const { transactionId, onSetTransactionId, onSetTransactionStatus } =
+  const { transactionId, setTransactionId, setTransactionStatus } =
     useTransactionWatcher();
 
   const etherscanLink = transactionId && makeEtherscanLink(transactionId);
 
   const onFinishTransaction = () => {
-    onSetTransactionId();
-    onSetTransactionStatus(TransactionStatusType.IS_UNSTARTED);
+    setTransactionId(undefined);
+    setTransactionStatus(TransactionStatusType.IS_UNSTARTED);
   };
 
   return (

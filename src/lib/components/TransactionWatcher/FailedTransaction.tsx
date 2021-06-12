@@ -2,21 +2,21 @@ import React from "react";
 import { Spacer } from "react-neu";
 import styled from "styled-components";
 
-import { RoundedButton } from "components/RoundedButton";
-import ExternalLink from "components/ExternalLink";
-import useTransactionWatcher from "hooks/useTransactionWatcher";
-import { makeEtherscanLink } from "utils/index";
-import { TransactionStatusType } from "contexts/TransactionWatcher/TransactionWatcherContext";
+import { RoundedButton } from "lib/components/RoundedButton";
+import ExternalLink from "lib/components/ExternalLink";
+import useTransactionWatcher from "lib/hooks/useTransactionWatcher";
+import { makeEtherscanLink } from "lib/utils/index";
+import { TransactionStatusType } from ".";
 
 const FailedTransaction: React.FC = () => {
-  const { transactionId, onSetTransactionId, onSetTransactionStatus } =
+  const { transactionId, setTransactionId, setTransactionStatus } =
     useTransactionWatcher();
 
   const etherscanLink = transactionId && makeEtherscanLink(transactionId);
 
   const onFinishTransaction = () => {
-    onSetTransactionId();
-    onSetTransactionStatus(TransactionStatusType.IS_UNSTARTED);
+    setTransactionId(undefined);
+    setTransactionStatus(TransactionStatusType.IS_UNSTARTED);
   };
 
   return (

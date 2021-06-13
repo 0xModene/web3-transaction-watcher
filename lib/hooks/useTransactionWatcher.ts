@@ -1,5 +1,5 @@
-import { TransactionStatusType } from "lib/components/TransactionWatcher";
-import { useState } from "react";
+import {TransactionStatusType} from "./../components/TransactionWatcher";
+import {useState} from "react";
 
 const useTransactionWatcher = () => {
   const [transactionId, setTransactionId] = useState<string>();

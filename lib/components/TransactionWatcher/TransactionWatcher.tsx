@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import PendingTransaction from "./PendingTransaction";
 import ApprovingTransaction from "./ApprovingTransaction";
 import CompletedTransaction from "./CompletedTransaction";
 import FailedTransaction from "./FailedTransaction";
 import LongTransaction from "./LongTransaction";
+
+export const makeEtherscanLink = (transactionHash: string) => {
+  return `https://etherscan.io/tx/${transactionHash}`;
+};
 
 export enum TransactionStatusType {
   IS_UNSTARTED,

@@ -1,15 +1,14 @@
 import React from "react";
-import { Spacer } from "react-neu";
+import {Spacer} from "react-neu";
 import styled from "styled-components";
 
-import { RoundedButton } from "lib/components/RoundedButton";
-import ExternalLink from "lib/components/ExternalLink";
-import useTransactionWatcher from "lib/hooks/useTransactionWatcher";
-import { makeEtherscanLink } from "lib/utils/index";
-import { TransactionStatusType } from ".";
+import {RoundedButton} from "./../../components/RoundedButton";
+import ExternalLink from "./../../components/ExternalLink";
+import useTransactionWatcher from "./../../hooks/useTransactionWatcher";
+import {TransactionStatusType, makeEtherscanLink} from "./TransactionWatcher";
 
-const FailedTransaction: React.FC = () => {
-  const { transactionId, setTransactionId, setTransactionStatus } =
+const CompletedTransaction: React.FC = () => {
+  const {transactionId, setTransactionId, setTransactionStatus} =
     useTransactionWatcher();
 
   const etherscanLink = transactionId && makeEtherscanLink(transactionId);
@@ -22,16 +21,16 @@ const FailedTransaction: React.FC = () => {
   return (
     <StyledCard>
       <StyledIcon
-        src="https://index-dao.s3.amazonaws.com/red-x.svg"
-        alt="red x"
+        src="https://index-dao.s3.amazonaws.com/green-check.svg"
+        alt="check mark"
       />
-      <StyledCardBody>Your transaction failed</StyledCardBody>
+      <StyledCardBody>Your transaction succeeded!</StyledCardBody>
       <ExternalLink href={etherscanLink} target="_blank">
         View the transaction{" "}
         <StyledTransactionArrow src="https://index-dao.s3.amazonaws.com/external-arrow.svg" />
       </ExternalLink>
       <Spacer />
-      <RoundedButton text="Try Again" onClick={onFinishTransaction} />
+      <RoundedButton text="Finish" onClick={onFinishTransaction} />
     </StyledCard>
   );
 };
@@ -50,7 +49,6 @@ const StyledIcon = styled.img`
   width: 55px;
   height: 55px;
 `;
-
 const StyledTransactionArrow = styled.img`
   width: 9px;
   height: 9px;
@@ -65,4 +63,4 @@ const StyledCardBody = styled.p`
   margin-bottom: 10px;
 `;
 
-export default FailedTransaction;
+export default CompletedTransaction;

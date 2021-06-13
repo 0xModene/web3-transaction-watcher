@@ -1,15 +1,14 @@
 import React from "react";
-import { Spacer } from "react-neu";
+import {Spacer} from "react-neu";
 import styled from "styled-components";
 
-import { RoundedButton } from "lib/components/RoundedButton";
-import ExternalLink from "lib/components/ExternalLink";
-import useTransactionWatcher from "lib/hooks/useTransactionWatcher";
-import { makeEtherscanLink } from "lib/utils/index";
-import { TransactionStatusType } from "./TransactionWatcher";
+import ExternalLink from "./../../components/ExternalLink";
+import useTransactionWatcher from "./../../hooks/useTransactionWatcher";
+import {RoundedButton} from "./../../components/RoundedButton";
+import {TransactionStatusType, makeEtherscanLink} from "./TransactionWatcher";
 
-const CompletedTransaction: React.FC = () => {
-  const { transactionId, setTransactionId, setTransactionStatus } =
+const LongTransaction: React.FC = () => {
+  const {transactionId, setTransactionId, setTransactionStatus} =
     useTransactionWatcher();
 
   const etherscanLink = transactionId && makeEtherscanLink(transactionId);
@@ -21,14 +20,13 @@ const CompletedTransaction: React.FC = () => {
 
   return (
     <StyledCard>
-      <StyledIcon
-        src="https://index-dao.s3.amazonaws.com/green-check.svg"
-        alt="check mark"
-      />
-      <StyledCardBody>Your transaction succeeded!</StyledCardBody>
+      <StyledCardBody>Your transaction is still processing</StyledCardBody>
       <ExternalLink href={etherscanLink} target="_blank">
         View the transaction{" "}
-        <StyledTransactionArrow src="https://index-dao.s3.amazonaws.com/external-arrow.svg" />
+        <img
+          alt="arrow"
+          src="https://index-dao.s3.amazonaws.com/external-arrow.svg"
+        />
       </ExternalLink>
       <Spacer />
       <RoundedButton text="Finish" onClick={onFinishTransaction} />
@@ -46,16 +44,6 @@ const StyledCard = styled.div`
   border-radius: ${(props) => props.theme.borderRadius}px;
 `;
 
-const StyledIcon = styled.img`
-  width: 55px;
-  height: 55px;
-`;
-const StyledTransactionArrow = styled.img`
-  width: 9px;
-  height: 9px;
-  margin-left: 2px;
-`;
-
 const StyledCardBody = styled.p`
   text-align: center;
   font-size: 20px;
@@ -64,4 +52,4 @@ const StyledCardBody = styled.p`
   margin-bottom: 10px;
 `;
 
-export default CompletedTransaction;
+export default LongTransaction;

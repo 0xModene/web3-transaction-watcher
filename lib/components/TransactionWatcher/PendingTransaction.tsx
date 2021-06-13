@@ -1,15 +1,15 @@
 import React from "react";
-import { useTheme } from "react-neu";
+import {useTheme} from "react-neu";
 import styled from "styled-components";
 import MoonLoader from "react-spinners/MoonLoader";
 
-import ExternalLink from "lib/components/ExternalLink";
-import useTransactionWatcher from "lib/hooks/useTransactionWatcher";
-import { makeEtherscanLink } from "lib/utils/index";
+import ExternalLink from "./../../components/ExternalLink";
+import useTransactionWatcher from "./../../hooks/useTransactionWatcher";
+import {makeEtherscanLink} from "./TransactionWatcher";
 
 const PendingTransaction: React.FC = () => {
   const theme = useTheme();
-  const { transactionId } = useTransactionWatcher();
+  const {transactionId} = useTransactionWatcher();
 
   const etherscanLink = transactionId && makeEtherscanLink(transactionId);
 
